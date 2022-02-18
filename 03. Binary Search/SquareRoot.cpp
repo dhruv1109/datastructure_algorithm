@@ -12,6 +12,8 @@ long long int mySqrt(int x) {
     {
         long long int mid=l+(h-l)/2;
         long long int sq= mid*mid;
+        if(sq==x)
+            return mid;
         if(sq>x)
             h=mid-1;
         else
