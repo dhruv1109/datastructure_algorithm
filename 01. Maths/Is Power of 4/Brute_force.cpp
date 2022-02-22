@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-//https://leetcode.com/problems/power-of-four/submissions/
+//hhttps://leetcode.com/problems/power-of-four/
 
 bool isPowerOfFour(int n) 
 {
