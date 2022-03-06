@@ -4,7 +4,6 @@ using namespace std;
 // Question -> https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/
 // My detailed answer -> https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/discuss/1823891/100-faster-C%2B%2B-solution-based-on-loop
 
-
 int countOrders(int n) 
 {
     int m=1e9+7;
