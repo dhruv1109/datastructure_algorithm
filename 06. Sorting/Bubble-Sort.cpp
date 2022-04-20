@@ -1,3 +1,8 @@
+//Compare neighbour elements and swap
+//jaise jaise round chalenge, largest element place hota jaega
+//in place
+//stable
+
 void bubbleSort(vector<int>& arr, int n)
 {   
 	for(int i=1;i<n;i++)
