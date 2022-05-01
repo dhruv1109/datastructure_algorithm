@@ -4,7 +4,8 @@ using namespace std;
 void merge(int *arr, int s,int e)
 {
     int m=(s+e)/2;
-    int l1=m-s+1;    int l2=e-m;
+    int l1=m-s+1;   
+    int l2=e-m;
     int *fir=new int[l1];
     int *sec=new int[l2];
     int main_idx=s;
