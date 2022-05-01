@@ -13,17 +13,17 @@ int partition(int *arr, int s,int e)
     swap(arr[s],arr[s+count]);
     int i=s;
     int j=e;
-    while(i<j)
+    int pvtidx=s+count;
+    while(i<pvtidx && j>pvtidx)
     {
-        if(arr[i]>pivot && arr[j]<pivot)
-            swap(arr[i++],arr[j--]);
-        
-        if(arr[i]<pivot)
+		while(arr[i]<pivot)
             i++;
-        if(arr[j]>pivot)
+        while(arr[j]>pivot)
             j--;
+        if(i<pvtidx && j>pvtidx)
+            swap(arr[i++],arr[j--]);       
     }
-    return i;
+    return pvtidx;
 }
 
 void quicksort(int *arr, int s,int e)
