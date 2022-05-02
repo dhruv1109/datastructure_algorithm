@@ -13,8 +13,15 @@ class Node
     }
 };
 
-void insertat(Node* head,int pos,int data)
+void insertat(Node* tail,Node* head,int pos,int data)
 {
+    //insert at start
+    if(pos==1)
+    {
+        InsertatHead(head,data);
+        return;
+    }
+
     Node* temp = head;
     int cnt=1;
     while(cnt<pos-1)
@@ -22,9 +29,28 @@ void insertat(Node* head,int pos,int data)
         temp=temp->next;
         cnt++;
     } 
+
+    // insert at last posn 
+    // last mai inset to ho jaega par tail nhi update hoga
+    // so we need to update tail
+
+    if(temp->next==NULL)
+    {
+        InsertatTail(tail,data);
+        return;
+    }
+
     Node* nodetoinsert=new Node(data);
     nodetoinsert->next=temp->next;
     temp->next=nodetoinsert;    
+}
+
+void  InsertatHead(Node* &head,int d) 
+{
+    //New node created  
+    Node* temp=new Node(d);
+    temp->next=head;
+    head=temp;
 }
 
 void  InsertatTail(Node* &tail,int d) 
@@ -60,6 +86,6 @@ int main()
     print(head);
     InsertatTail(tail,13);
     print(head);
-    insertat(head,3,22);
+    insertat(tail,head,3,22);
     print(head);
 }
