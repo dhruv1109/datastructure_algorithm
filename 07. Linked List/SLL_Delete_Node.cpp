@@ -23,6 +23,22 @@ class Node
     }
 };
 
+void  InsertatHead(Node* &head,int d) 
+{
+    //New node created  
+    Node* temp=new Node(d);
+    temp->next=head;
+    head=temp;
+}
+
+void  InsertatTail(Node* &tail,int d) 
+{
+    //New node created  
+    Node* temp=new Node(d);
+    tail->next=temp;
+    tail=tail->next;
+}
+
 void insertat(Node* tail,Node* head,int pos,int data)
 {
     if(pos==1)
@@ -47,22 +63,6 @@ void insertat(Node* tail,Node* head,int pos,int data)
     Node* nodetoinsert=new Node(data);
     nodetoinsert->next=temp->next;
     temp->next=nodetoinsert;    
-}
-
-void  InsertatHead(Node* &head,int d) 
-{
-    //New node created  
-    Node* temp=new Node(d);
-    temp->next=head;
-    head=temp;
-}
-
-void  InsertatTail(Node* &tail,int d) 
-{
-    //New node created  
-    Node* temp=new Node(d);
-    tail->next=temp;
-    tail=tail->next;
 }
 
 void print(Node* &head)
@@ -90,7 +90,7 @@ void nodetodelete(int pos,Node* &head)
     int cnt=1;
     while(cnt<pos)
     {
-        prev-curr;
+        prev=curr;
         curr=curr->next;
         cnt++;
     }
