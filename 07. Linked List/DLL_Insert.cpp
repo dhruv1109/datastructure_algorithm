@@ -39,29 +39,45 @@ int getLength(Node* &head)
     return len;
 }
 
-void  InsertatHead(Node* &head,int d) 
+void  InsertatHead(Node* &tail,Node* &head,int d) 
 {
-    //New node created  
-    Node* temp=new Node(d);
-    temp->next=head;
-    head->prev=temp;
-    head=temp;
+    if(head==NULL)
+    {
+        Node* temp=new Node(d);
+        head=temp;
+        tail=temp;
+    }
+    else
+    {
+        Node* temp=new Node(d);
+        temp->next=head;
+        head->prev=temp;
+        head=temp;
+    }
 }
 
-void  InsertatTail(Node* &tail,int d) 
+void  InsertatTail(Node* &tail,Node* &head,int d) 
 {
-    //New node created  
-    Node* temp=new Node(d);
-    tail->next=temp;
-    temp->prev=tail;
-    tail=temp;
+    if(tail==NULL)
+    {
+        Node* temp=new Node(d);
+        tail=temp;
+        head=temp;
+    }
+    else
+    {
+        Node* temp=new Node(d);
+        tail->next=temp;
+        temp->prev=tail;
+        tail=temp;
+    }    
 }
 
 void insertat(Node* tail,Node* head,int pos,int data)
 {
     if(pos==1)
     {
-        InsertatHead(head,data);
+        InsertatHead(tail,head,data);
         return;
     }
 
@@ -74,7 +90,7 @@ void insertat(Node* tail,Node* head,int pos,int data)
     } 
     if(temp->next==NULL)
     {
-        InsertatTail(tail,data);
+        InsertatTail(tail,head,data);
         return;
     }
 
@@ -92,16 +108,16 @@ int main()
     Node* tail=N1;
     print(head);
     cout<<"Length of ll is "<<getLength(head)<<endl;
-    InsertatHead(head,11);
+    InsertatHead(tail,head,11);
     print(head);   
-    InsertatHead(head,12);
+    InsertatHead(tail,head,12);
     print(head); 
-    InsertatHead(head,13);
+    InsertatHead(tail,head,13);
     print(head);  
     cout<<"Length of ll is "<<getLength(head)<<endl;
-    InsertatTail(tail,25);
+    InsertatTail(tail,head,25);
     print(head);  
-    InsertatTail(tail,50);
+    InsertatTail(tail,head,50);
     print(head);  
     cout<<"Length of ll is "<<getLength(head)<<endl;
     insertat(tail,head,2,100);
