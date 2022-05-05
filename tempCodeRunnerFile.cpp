@@ -11,8 +11,43 @@ class Node
         this->data=data;
         this->next=NULL;
     }
+    ~Node()
+    {
+        int val=this->data;
+        if(this->next !=NULL)
+        {
+            delete next;
+            this->next =NULL;
+        }
+        cout<<"Memory is free for node with data "<<val<<endl;
+    }
 };
 
+void insertat(Node* tail,Node* head,int pos,int data)
+{
+    if(pos==1)
+    {
+        InsertatHead(head,data);
+        return;
+    }
+
+    Node* temp = head;
+    int cnt=1;
+    while(cnt<pos-1)
+    {
+        temp=temp->next;
+        cnt++;
+    } 
+    if(temp->next==NULL)
+    {
+        InsertatTail(tail,data);
+        return;
+    }
+
+    Node* nodetoinsert=new Node(data);
+    nodetoinsert->next=temp->next;
+    temp->next=nodetoinsert;    
+}
 
 void  InsertatHead(Node* &head,int d) 
 {
@@ -30,38 +65,6 @@ void  InsertatTail(Node* &tail,int d)
     tail=tail->next;
 }
 
-void insertat(Node* tail,Node* head,int pos,int data)
-{
-    //insert at start
-    if(pos==1)
-    {
-        InsertatHead(head,data);
-        return;
-    }
-
-    Node* temp = head;
-    int cnt=1;
-    while(cnt<pos-1)
-    {
-        temp=temp->next;
-        cnt++;
-    } 
-
-    // insert at last posn 
-    // last mai inset to ho jaega par tail nhi update hoga
-    // so we need to update tail
-
-    if(temp->next==NULL)
-    {
-        InsertatTail(tail,data);
-        return;
-    }
-
-    Node* nodetoinsert=new Node(data);
-    nodetoinsert->next=temp->next;
-    temp->next=nodetoinsert;    
-}
-
 void print(Node* &head)
 {
     Node* temp=head;
@@ -71,6 +74,29 @@ void print(Node* &head)
         temp=temp->next;
     }
     cout<<endl;
+}
+
+void nodetodelete(int pos,Node* &head)
+{
+    if(pos==1)
+    {
+        Node* temp=head;
+        head=head->next;
+        temp->next=NULL;
+        delete temp;
+    }
+    Node* curr=head;
+    Node* prev=NULL;
+    int cnt=1;
+    while(cnt<pos)
+    {
+        prev-curr;
+        curr=curr->next;
+        cnt++;
+    }
+    prev->next=curr->next;
+    curr->next=NULL;
+    delete curr;
 }
 
 int main()
@@ -88,5 +114,7 @@ int main()
     InsertatTail(tail,13);
     print(head);
     insertat(tail,head,3,22);
+    print(head);
+    nodetodelete(2,head);
     print(head);
 }
