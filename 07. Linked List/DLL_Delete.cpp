@@ -171,7 +171,9 @@ int main()
     print(head);
     deleteNode(6,head);
     print(head);
-    deleteNode(6,head);
+    deleteNode(5,head);
+    print(head);
+    deleteNode(5,head);
     print(head);
 
 }
