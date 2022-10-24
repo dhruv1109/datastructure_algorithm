@@ -23,7 +23,6 @@ public:
         dummy->next =head;		
 		
         ListNode *L ,*LEFT_PTR=dummy;
-        cout<<LEFT_PTR->val;
         for(int i=0;i<left-1;i++)
             LEFT_PTR = LEFT_PTR->next;
 		
