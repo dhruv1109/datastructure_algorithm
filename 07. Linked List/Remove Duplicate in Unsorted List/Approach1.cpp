@@ -29,7 +29,7 @@ Node *removeDuplicates(Node *head)
             {
                 next_next = curr->next->next;
                 delete curr->next;
-                curr->next = curr->next->next;;
+                curr->next = next_next;
             }
             else
             {
