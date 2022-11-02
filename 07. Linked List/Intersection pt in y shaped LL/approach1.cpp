@@ -1,6 +1,8 @@
 // https://practice.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1
 // brute force
 // chech by using 2 loops
+// O(m*n) time
+// O(1) space
 
 int intersectPoint(Node* head1, Node* head2)
 {
